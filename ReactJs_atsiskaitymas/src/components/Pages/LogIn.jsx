@@ -6,12 +6,12 @@ import UsersContext from "../../context/UsersContext";
 
 const StyledDiv = styled.div`
 
+width: 50%;
+margin: 0 auto;
+display: flex;
+flex-direction: column;
+align-items: center;
   > form{
-    width: 50%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     gap: 5px;
   }
 `;
@@ -22,8 +22,7 @@ const LogIn = () => {
     password: ''
   });
   const [failedLogIn, setFailedLogIn] = useState(false);
-  const { users, setCurrentUser } = useContext(UsersContext);
-
+  const { users, setCurrentUser } = useContext(UsersContext);  
   const navigate = useNavigate();
 
   const inputHandler = e => {

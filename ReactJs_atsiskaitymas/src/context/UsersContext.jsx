@@ -2,8 +2,7 @@ import { createContext, useReducer, useEffect, useState } from "react";
 
 const UsersContext = createContext();
 const UsersActionTypes = {
-  get: 'get_all_users',
-  changeStatus: 'LogIn_or_notLogIn'
+  get: 'get_all_users'
 };
 
 const reducer = (state, action) => {
