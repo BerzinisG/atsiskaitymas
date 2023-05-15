@@ -1,0 +1,37 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "userName": "One",
+      
+      "password": "123"
+    },
+    {
+      "id": 2,
+      "userName": "Two",
+      "password": "456"
+    },
+    {
+      "id": 3,
+      "userName": "Three",
+      "password": "789"
+    }
+  ],
+  "posts": [
+    {
+      "id": 4,
+      "title": "Pirmas",
+      "description":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum, illo."
+    },
+    {
+      "id": 5,
+      "title": "Antras",
+      "description":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum, illo."
+    },
+    {
+      "id": 6,
+      "title": "Trečias",
+      "description":"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cum, illo."
+    }
+  ]
+}
