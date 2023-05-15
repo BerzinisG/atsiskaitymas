@@ -2,19 +2,21 @@
   "users": [
     {
       "id": 1,
-      "userName": "One",
-      
-      "password": "123"
+      "email": "One@gmail.com",      
+      "password": "123",
+      "logIn": false
     },
     {
       "id": 2,
-      "userName": "Two",
-      "password": "456"
+      "email": "Two@gmail.com",
+      "password": "456",
+      "logIn": false
     },
     {
       "id": 3,
-      "userName": "Three",
-      "password": "789"
+      "email": "Three@gmail.com",
+      "password": "789",
+      "logIn": false
     }
   ],
   "posts": [
