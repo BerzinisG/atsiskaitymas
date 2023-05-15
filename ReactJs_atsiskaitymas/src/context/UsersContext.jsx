@@ -3,7 +3,7 @@ import { createContext, useReducer, useEffect, useState } from "react";
 const UsersContext = createContext();
 const UsersActionTypes = {
   get: 'get_all_users',
-  changeStatus: 'LogIn_or_LogIn'
+  changeStatus: 'LogIn_or_notLogIn'
 };
 
 const reducer = (state, action) => {
@@ -33,7 +33,7 @@ const reducer = (state, action) => {
 const UsersProvider = ({ children }) => {
 
   const [users, setUsers] = useReducer(reducer, []);
-  const [currentUser, setCurrentEmail] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:8080/users`)
@@ -51,7 +51,7 @@ const UsersProvider = ({ children }) => {
         setUsers,
         UsersActionTypes,
         currentUser,
-        setCurrentEmail
+        setCurrentUser
       }}
     >
       { children }

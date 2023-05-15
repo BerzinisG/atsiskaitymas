@@ -1,42 +1,50 @@
-import { useState, useContext } from "react";
+import { useState, useContext} from "react";
 import {useNavigate} from 'react-router-dom';
 import {compareSync} from 'bcryptjs';
 import styled from "styled-components";
 import UsersContext from "../../context/UsersContext";
 
 const StyledDiv = styled.div`
-  
-`
+
+  > form{
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+`;
 
 const LogIn = () => {
-    const [formInputs, setFormInputs] = useState({
-      email: '',
-      password: ''
+  const [formInputs, setFormInputs] = useState({
+    email: '',
+    password: ''
+  });
+  const [failedLogIn, setFailedLogIn] = useState(false);
+  const { users, setCurrentUser } = useContext(UsersContext);
+
+  const navigate = useNavigate();
+
+  const inputHandler = e => {
+    setFormInputs({
+      ...formInputs,
+      [e.target.name]:e.target.value
     });
-    const [failedLogIn, setFailedLogIn] = useState(false);
-    const { users, setCurrentEmail} = useContext(UsersContext);
-  
-    const navigate = useNavigate();
-  
-    const inputHandler = e => {
-      setFormInputs({
-        ...formInputs,
-        [e.target.email]:e.target.value
-      });
-      setFailedLogIn(false);
+    setFailedLogIn(false);
+  }
+
+  const formSubmit = e => {
+    e.preventDefault();
+    const loggedInUser = users.find(user => user.email === formInputs.email && compareSync(formInputs.password, user.password));
+
+    if(loggedInUser){
+      setCurrentUser(loggedInUser);
+      navigate('/Home');
+    } else {
+      setFailedLogIn(true);
     }
-  
-    const formSubmit = e => {
-      e.preventDefault();
-      const loggedInEmail = users.find(email => users.email === formInputs.email && compareSync(formInputs.password, email.password));
-  
-      if(loggedInEmail){
-        setCurrentEmail(loggedInEmail);
-        navigate('/Home');
-      } else {
-        setFailedLogIn(true);
-      }
-    }
+  }
 
   return ( 
     <StyledDiv>
@@ -44,7 +52,7 @@ const LogIn = () => {
         <div>
           <label htmlFor="email">Email:</label>
           <input
-            type="text"
+            type="email"
             name="email" id="email"
             value={formInputs.email}
             onChange={(e)=>{inputHandler(e)}}
